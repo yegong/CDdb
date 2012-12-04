@@ -1,3 +1,10 @@
+# CDDB
+Everything is the same as FMDB. But if you use `CD` prefix class instead. You got such features:
+1. `CDDatabase` - Every SQL argument which starts with `@` will be understanded as a SQL identifier. For example, `@CDMigrationMeta:update_current_version` represents the SQL located at `CDMigrationMeta.plist` with the key `update_current_version`;
+2. `CDDatabaseQueue` - The `FMDatabaseQueue` + `CDDatabase`
+3. `CDMigration` - Something like RubyOnRails migrations.
+4. `CDMigrationExecutor` - The `CDMigration` executor
+
 # FMDB
 This is an Objective-C wrapper around SQLite: http://sqlite.org/
 

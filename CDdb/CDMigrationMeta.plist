@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>create_version_table</key>
+        <string>
+            CREATE TABLE IF NOT EXISTS cd_migration_version (
+                id INTEGER PRIMARY KEY,
+                version INTEGER
+            );
+        </string>
+        <key>init_version_table</key>
+        <string>
+            INSERT OR IGNORE INTO cd_migration_version (id, version) VALUES (1, 0);
+        </string>
+        <key>create_history_table</key>
+        <string>
+            CREATE TABLE IF NOT EXISTS cd_migration_history (
+                id INTEGER PRIMARY KEY,
+                version_from INTEGER,
+                version_to INTEGER,
+                description TEXT,
+                created_at INTEGER
+            );
+        </string>
+        <key>get_current_version</key>
+        <string>
+            SELECT version FROM cd_migration_version WHERE id = 1;
+        </string>
+        <key>update_current_version</key>
+        <string>
+            UPDATE cd_migration_version SET version = ? WHERE id = 1;
+        </string>
+        <key>insert_history</key>
+        <string>
+            INSERT INTO cd_migration_history(version_from, version_to, description, created_at)
+            VALUES (?, ?, ?, datetime('now'));
+        </string>
+    </dict>
+</plist>
