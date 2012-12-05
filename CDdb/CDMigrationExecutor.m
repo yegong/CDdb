@@ -1,10 +1,10 @@
 //  Created by Cooper Du on 2012-12-03.
-#import "CDMigrationTask.h"
+#import "CDMigrationExecutor.h"
 #import "CDMigration.h"
 #import "CDDatabase.h"
 
 
-@implementation CDMigrationTask
+@implementation CDMigrationExecutor
 
 - (id) initWithDatabase:(CDDatabase *)database andMigrations:(NSArray *)migrations
 {
@@ -73,9 +73,9 @@
         int from = currentVersion;
         int to = currentVersion + step;
         int migrationVersion = MAX(from, to);
-		if (migrationVersion > 0 && migrationVersion <= _migrations.count) {
-			return currentVersion;
-		}
+        if (migrationVersion <= 0 || migrationVersion > _migrations.count) {
+            break;
+        }
         id<CDMigration> migration = _migrations[migrationVersion - 1];
         bool succ = [self migrate: migration from: from to: to];
         if (!succ) {
