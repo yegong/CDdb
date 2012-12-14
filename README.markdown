@@ -6,10 +6,15 @@ Everything is the same as FMDB. But if you use `CD` prefix class instead. You go
 3. `CDMigration` - Something like RubyOnRails migrations.
 4. `CDMigrationExecutor` - The `CDMigration` executor
 
-## CDDB
-What's less?
+## What's less?
 
 I'm experienced programmer but also the one new to the objective-c. I'm not going to study the `retain`-`release` way if it's possible. So, the arc is a must in my changes. However, if you make it backward-compatible, I'm still quite happy to pull your greate contributions.
+
+## Where's the .xcodeproj
+
+I deleted it... It's quite stupid. But when I made these changes, I still don't know the reason to keep it. You know, when I do the Java in work, no one would committed the IntelliJ project directory.
+
+After I learn some of the best practise in objective-c, I know the .xcodeproj is quite useful for the cross-project reference. However, as a lazy one like me, don't want to rebuild the project file. So you can manage the quite minor issue yourself as you want. And the pull request is still quite welcome then.
 
 # FMDB
 This is an Objective-C wrapper around SQLite: http://sqlite.org/
