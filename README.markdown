@@ -6,6 +6,11 @@ Everything is the same as FMDB. But if you use `CD` prefix class instead. You go
 3. `CDMigration` - Something like RubyOnRails migrations.
 4. `CDMigrationExecutor` - The `CDMigration` executor
 
+## CDDB
+What's less?
+
+I'm experienced programmer but also the one new to the objective-c. I'm not going to study the `retain`-`release` way if it's possible. So, the arc is a must in my changes. However, if you make it backward-compatible, I'm still quite happy to pull your greate contributions.
+
 # FMDB
 This is an Objective-C wrapper around SQLite: http://sqlite.org/
 
