@@ -63,7 +63,7 @@
 - (int) migrateToVersion:(int)version
 {
     [self setupMetaTables];
-    int currentVersion = self.currentVersion;
+    int currentVersion = [self currentVersion];
     if (currentVersion == version) {
         return currentVersion;
     }
@@ -88,10 +88,10 @@
 
 - (int) currentVersion
 {
-    FMResultSet *result = [_database executeQuery: @"@CDMigrationMeta:get_current_version"];
-    if (result.next) {
-        int version = [result intForColumnIndex: 0];
-        [result close];
+    FMResultSet *rs = [_database executeQuery: @"@CDMigrationMeta:get_current_version"];
+    if ([rs next]) {
+        int version = [rs intForColumnIndex: 0];
+        [rs close];
         return version;
     }
     else {
