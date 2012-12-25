@@ -47,8 +47,8 @@
         succ &= [migration downgrade: _database];
         NSLog(@"Downgrade to version %d", to);
     }
-    succ &= [_database executeUpdate: @"@CDMigrationMeta:update_current_version", [NSNumber numberWithInt: to]];
-    succ &= [_database executeUpdate: @"@CDMigrationMeta:insert_history", [NSNumber numberWithInt: from], [NSNumber numberWithInt: to], migration.description];
+    succ &= [_database executeUpdate: @"@CDMigrationMeta:update_current_version", @(to)];
+    succ &= [_database executeUpdate: @"@CDMigrationMeta:insert_history", @(from), @(to), migration.description];
     if (succ) {
         NSLog(@"Success!");
         return [_database commit];
